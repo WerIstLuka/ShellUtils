@@ -1,0 +1,20 @@
+#!/bin/python3
+
+#show current unix time and seconds until 32 bit unix time runs out
+
+import time
+
+UnixTime = int(time.time())
+IntLimit = 2 ** 31 - 1
+
+#get lenth of string to put them in line
+UnixLen = len(str(UnixTime))
+IntLen = len(str(IntLimit - UnixTime))
+
+Spacer = ""
+while IntLen != UnixLen:
+	Spacer += " "
+	IntLen += 1
+
+print(f"Current Unix Time: {UnixTime}")
+print(f"Seconds Remaing:   {Spacer}{IntLimit - UnixTime}")

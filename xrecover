@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#if your Xorg session doesnt output video this script might help
+
+xrandr >> /dev/null
+if [ $? == 0 ]; then
+echo "remember the name of connected primary monitor"
+echo "remember the resolution and fps of that monitor"
+read -p "press Enter to continue:"
+xrandr
+read -p "name of primary monitor: " Monitor
+read -p "Resolution: " Resolution
+read -p "Fps: " Fps
+echo "------------------------------------------"
+echo "Switch to Xorg and wait about 10 seconds"
+read -p "press Enter to continue:"
+
+sleep 10 && xrandr --output $Monitor --mode $Resolution --rate $Fps
+unset $Monitor $resolution $Fps
+
+
+else
+ps aux | grep Xorg
+echo ""
+echo "/bin/Xorg :Num (Put the number in command below)"
+echo "to set display do \"export DISPLAY=:<Num>\""
+echo "example: \"export DISPLAY=:0\""
+fi

@@ -1,0 +1,49 @@
+#!/bin/python3
+
+import sys
+
+if len(sys.argv) == 1:
+	quit("No Number given")
+
+def Help():
+	print("""\
+enter an integer and get the decimal integer returned
+
+Usage:
+	int [Options] [Integers]
+
+Options:
+	-x:  Add 0x Prefix to all input Integers
+
+	-b:  Add 0b Prefix to all input Integers
+
+	-h:  Show this text\
+""")
+	quit()
+
+
+Count = 0
+Prefix = ""
+
+#check prefix overwrite
+while Count < len(sys.argv):
+	Count += 1
+	match sys.argv[Count - 1]:
+		case "-x":
+			Prefix = "0x"
+		case "-b":
+			Prefix = "0b"
+		case "-h":
+			Help()
+		case "--help":
+			Help()
+
+#remove prefix overide from args
+if Prefix != "":
+	sys.argv.pop(Count - 1)
+
+Count = 0
+
+while Count + 1 < len(sys.argv):
+	Count += 1
+	print(int(Prefix + "".join(sys.argv[1:][Count - 1]), 0))
