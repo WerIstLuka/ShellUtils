@@ -17,4 +17,4 @@ while IntLen != UnixLen:
 	IntLen += 1
 
 print(f"Current Unix Time: {UnixTime}")
-print(f"Seconds Remaining:   {Spacer}{IntLimit - UnixTime}")
+print(f"Seconds Remaining: {Spacer}{IntLimit - UnixTime}")
